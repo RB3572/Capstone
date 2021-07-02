@@ -2,7 +2,8 @@
 <p align="center">Rakshit Kaushik, Alessandro Ferrari, Sergio Papa Estefano, Rishi Bhargava</p>
 
 ## Data
-(Explination of Data: Include subject, size, variables ect...).
+(Explination of Data: Include subject, size, variables ect...)
+aditional stuff
 
 (Importance of data: Include the goal of the project and its real world aplications).
 ## Benchmark 
