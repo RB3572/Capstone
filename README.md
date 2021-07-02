@@ -3,7 +3,6 @@
 
 ## Data
 (Explination of Data: Include subject, size, variables ect...)
-aditional stuff
 
 (Importance of data: Include the goal of the project and its real world aplications).
 ## Benchmark 
