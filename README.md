@@ -1,4 +1,11 @@
-<p align="center">https://img.shields.io/github/license/RB3572/Capstone</p>
+<div align="center">
+	<img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/RB3572/Capstone">
+	<img alt="GitHub" src="https://img.shields.io/github/license/RB3572/Capstone">
+	<img alt="GitHub repo file count" src="https://img.shields.io/github/directory-file-count/RB3572/Capstone">
+	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/RB3572/Capstone">
+	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/RB3572/Capstone">
+	<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/RB3572/Capstone">
+</div>
 
 # <p align="center">[Insert Project Topic Name]</p>
 <p align="center">Rakshit Kaushik, Alessandro Ferrari, Sergio Papa Estefano, Rishi Bhargava</p>
