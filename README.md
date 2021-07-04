@@ -34,7 +34,7 @@ Existing projects include:
 	- Parameters for brownian motion can be tuned using past data to predict future stock trends
 
 <div>
-  <img src="https://github.com/yiqiao-yin/Introduction-to-Machine-Learning-Big-Data-and-Application/blob/main/pics/brownian-motion.gif" width="420px" /><img src="https://github.com/yiqiao-yin/Introduction-to-Machine-Learning-Big-Data-and-Application/blob/main/pics/cross-section-stock-returns.gif" width="420px" />
+  <p align="center"><img src="https://github.com/yiqiao-yin/Introduction-to-Machine-Learning-Big-Data-and-Application/blob/main/pics/brownian-motion.gif" width="400px" /><img src="https://github.com/yiqiao-yin/Introduction-to-Machine-Learning-Big-Data-and-Application/blob/main/pics/cross-section-stock-returns.gif" width="400px" />
 </div>
 
 
