@@ -39,8 +39,8 @@ Existing projects include:
 
 
 ## Proposed Model/Algorithm: 
-A golden/death cross occurs when the ploted line of a stock's long term average crosses the line of its short term average. If the short term average starts below the long term average and crosses above it, the pattern is called a golden cross. Otherwise, it's called a death cross. A golden cross is a signifier of a bull market, or a continuous rise in stock price, while a death cross marks a bearish, or lowering, price trend. Using machine learning, our model will use opening, high, low, closing, and the adjusted closing prices to learn to predict death and golden crosses.
- <p align="center"><img src="https://i.ibb.co/rGDzzCW/Screen-Shot-2021-07-05-at-2-06-25-PM.png" alt="Screen-Shot-2021-07-05-at-2-06-25-PM" border="0"></a>
+A golden/death cross occurs when the ploted line of a stock's long term average crosses the line of its short term average. If the short term average starts below the long term average and crosses above it, the pattern is called a golden cross. Otherwise, it's called a death cross. A golden cross is a signifier of a bull market, or a continuous rise in stock price, while a death cross marks a bearish, or lowering, price trend. Using machine learning, our model will use opening, high, low, closing, and the adjusted closing prices to learn to predict death and golden crosses. 
+ [<p align="center"><img src="https://i.ibb.co/rGDzzCW/Screen-Shot-2021-07-05-at-2-06-25-PM.png" alt="Screen-Shot-2021-07-05-at-2-06-25-PM" border="0"></a>](https://www.tradingview.com/chart/LOExVaqb/)
  
   
 
