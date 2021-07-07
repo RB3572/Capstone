@@ -15,3 +15,5 @@ stock <- lapply(as.list(stockArray), function(x) {
 
 ########## MANIPULATE DATA ###################
 allData <- as.data.frame(stock)
+
+closeDat <- select(allData, contains("Close"))
