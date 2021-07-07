@@ -1,5 +1,5 @@
-install.packages("quantmod")
 library(quantmod)
+library(TTR)
 
 #getting data
 tickers = "AMZN"
