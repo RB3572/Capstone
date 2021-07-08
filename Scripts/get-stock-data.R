@@ -29,7 +29,7 @@ closeData <- select(rawData, contains("Close"))
 volumeData <- select(rawData, contains("Volume"))
 adjustedData <- select(rawData, contains("Adjusted"))
 
-
+allData <- data.frame()
 allData <- rbind(openData, highData)
 
 ma50 = SMA(closeData[1])

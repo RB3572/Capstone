@@ -5,7 +5,7 @@ library(keras)
 library(quantmod)
 library(TTR)
 library(devtools)
-install_github("Ferryistaken/ezstocks")
+# install_github("Ferryistaken/ezstocks")
 library(ezstocks)
 
 # Get data
