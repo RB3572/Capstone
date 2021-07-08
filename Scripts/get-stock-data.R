@@ -32,7 +32,8 @@ adjustedData <- select(rawData, contains("Adjusted"))
 allData <- data.frame()
 allData <- rbind(openData, highData)
 
-ma50 = SMA(closeData[1])
+ma50 = SMA(closeData[1], 50)
+ma200 = SMA(closeData[1], 200)
 
 for (i in 1:length(stockArray)) {
     print(paste0(stockArray[i], "$", stockArray[i], ".Close"))
