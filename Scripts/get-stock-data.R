@@ -20,9 +20,17 @@ stock <- lapply(as.list(stockArray), function(x) {
         tmp})
 
 ########## MANIPULATE DATA ###################
-allData <- as.data.frame(stock)
+rawData <- as.data.frame(stock)
 
-closeData <- select(allData, contains("Close"))
+openData <- select(rawData, contains("Open"))
+highData <- select(rawData, contains("High"))
+lowData <- select(rawData, contains("Low"))
+closeData <- select(rawData, contains("Close"))
+volumeData <- select(rawData, contains("Volume"))
+adjustedData <- select(rawData, contains("Adjusted"))
+
+
+allData <- rbind(openData, highData)
 
 ma50 = SMA(closeData[1])
 
