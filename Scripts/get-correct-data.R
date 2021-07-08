@@ -20,4 +20,6 @@ getCorrectData = function(stockArray) {
         
         colnames(sortedStockData)[((length(stockArray) * 6) * 2) + i] <- paste0(colnames(sortedStockData)[i], ".SMA200")
     }
+    
+    return(sortedStockData)
 }
