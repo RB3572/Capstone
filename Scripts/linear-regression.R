@@ -49,6 +49,7 @@ for (i in 1:(nPredictions - nrow(close))) {
 
 out <- cbind(close, predictions)
 
+# TODO: Make this line thinner
 plot(y = out$predictions,
      x = 1:nrow(out),
      xlim = c(1, 5000),
