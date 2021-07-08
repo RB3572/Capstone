@@ -8,9 +8,9 @@ library(devtools)
 library(ezstocks)
 
 
-stockArray <- c("AAPL", "MSFT")
+stockArray <- c("AAPL", "MSFT", "V", "AMZN", "RTX")
 # Get data
-stockData <- getStockData(stockArray)
+stockData <- getStockData(stocks = stockArray, startYear = "2015", startMonth = "01", startDay = "01")
 
 # Manipulate data
 sortedStockData <- cbind(getHighData(stockData), getOpenData(stockData), getCloseData(stockData), getLowData(stockData), getVolume(stockData), getAdjustedData(stockData))
@@ -24,5 +24,5 @@ for (i in 1:(length(stockArray)*6)) {
 for (i in 1:(length(stockArray)*6)) {
     sortedStockData <- cbind(sortedStockData, SMA(sortedStockData[, i], 200))
     
-    colnames(sortedStockData)[(length(stockArray) * 6)*2 + i] <- paste0(colnames(sortedStockData)[i], ".SMA200")
+    colnames(sortedStockData)[((length(stockArray) * 6) * 2) + i] <- paste0(colnames(sortedStockData)[i], ".SMA200")
 }
