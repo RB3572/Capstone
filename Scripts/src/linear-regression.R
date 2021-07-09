@@ -44,10 +44,10 @@ out <- cbind(close, predictions)
 plot(y = out$predictions,
      x = 1:nrow(out),
      xlim = c(1, 5000),
-     col = "black",
-     lwd = 0.2,
+     col = "grey",
+     lwd = 0.1,
      main = paste0("Real price of ", stocks[1], " vs prediction"),
      xlab = "Time (Days)",
      ylab = "Price (USD)")
 
-lines(close[, 1], col = "grey")
+lines(close[, 1], col = "blue")
