@@ -9,7 +9,7 @@ library(ezstocks)
 library(xts)
 library(dygraphs)
 
-source("get-correct-data.R")
+source("src/get-correct-data.R")
 
 library(TimeWarp)
 
