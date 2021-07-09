@@ -11,13 +11,11 @@ library(dygraphs)
 
 source("src/get-correct-data.R")
 
-library(TimeWarp)
-
 startYear <- "2010"
 startMonth <- "01"
 startDay <- "01"
 
-stocks <- c("RTX")
+stocks <- c("MSFT")
 
 stockData = getStockData(stocks,
                          startYear = startYear,
