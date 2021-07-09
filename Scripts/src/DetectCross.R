@@ -1,24 +1,9 @@
-install.packages("devtools")
-library(devtools)
-install_github("Ferryistaken/ezstocks", force = TRUE)
-library(ezstocks)
-install.packages("dplyr")
-source("Scripts/src/get-correct-data.R")
-
-
-data = getCorrectData(c("AAPL"))
-c1 = test(data)
-data = cbind(data, c1)
-
-
-
-test <- function(data){
+detectCross <- function(data){
     
     is50Higher = FALSE
     crosses = c()
     for(i in 1:(nrow(data)-1)){
         
-        print(i)
         if(is.na(data$AAPL.Close.SMA50[i]) || is.na(data$AAPL.Close.SMA200[i])){
             crosses = append(crosses, NA)
         } 
@@ -28,6 +13,7 @@ test <- function(data){
                     is50Higher = FALSE
                     #death cross
                     crosses = append(crosses, 'd')
+                    print(paste0("death cross at", i))
                 }
                 else{
                     crosses = append(crosses, NA)
@@ -39,6 +25,7 @@ test <- function(data){
                     is50Higher = TRUE
                     #golden cross
                     crosses = append(crosses,'g')
+                    print(paste0("golden cross at", i))
                 }
                 else{
                     crosses= append(crosses, NA)
@@ -48,27 +35,6 @@ test <- function(data){
     }
 return (crosses)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 getCorrectData = function(stockArray) {
     library(quantmod)
     library(TTR)
@@ -94,3 +60,7 @@ getCorrectData = function(stockArray) {
     
     return(sortedStockData)
 }
+
+data = getCorrectData(c("AAPL"))
+c1 = detectCross(data)
+data = cbind(data, c1)
