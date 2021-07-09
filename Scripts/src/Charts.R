@@ -20,5 +20,3 @@ lines(AMZN[s:(s+x), 3], type = "l", col = 3, lty=1)
 lines(AMZN[s:(s+x), 4], type = "l", col = 4, lty=1)
 lines(AMZN[s:(s+x), 5], type = "l", col = 5, lty=1)
 lines(AMZN[s:(s+x), 6], type = "l", col = 6, lty=1)
-
-ma50 = 
