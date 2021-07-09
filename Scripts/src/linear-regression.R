@@ -49,4 +49,5 @@ plot(y = out$predictions,
      main = paste0("Real price of ", stocks[1], " vs prediction"),
      xlab = "Time (Days)",
      ylab = "Price (USD)")
+
 lines(close[, 1], col = "grey")
