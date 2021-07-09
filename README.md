@@ -4,6 +4,7 @@
 	<img alt="GitHub" src="https://img.shields.io/github/license/RB3572/Capstone">
 	<img alt="GitHub repo file count" src="https://img.shields.io/github/directory-file-count/RB3572/Capstone">
 	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/RB3572/Capstone">
+	<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/RB3572/Capstone">
 	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/RB3572/Capstone">
 	<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/RB3572/Capstone">
 </div>
