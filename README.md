@@ -1,4 +1,5 @@
 <div align="center">
+	<img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/RB3572/Capstone/lint-project">
 	<img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/RB3572/Capstone">
 	<img alt="GitHub" src="https://img.shields.io/github/license/RB3572/Capstone">
 	<img alt="GitHub repo file count" src="https://img.shields.io/github/directory-file-count/RB3572/Capstone">
