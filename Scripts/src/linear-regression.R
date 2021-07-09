@@ -26,15 +26,6 @@ stockData = getStockData(stocks,
 
 close = getCloseData(stockData)
 
-# Subset to your desired 3-year date range
-# end = as.character(last(index(AAPL)))
-# start = as.character(TimeWarp::dateWarp(last(index(AAPL)),"-3 years"))
-# subset = AAPL[paste(start,end,sep="/")]
-
-# Work with subset from now on. Chart subset (note I removed
-# subset argument from call to chartSeries)
-# chartSeries(subset, TA = NULL, theme = "white", up.col = "green", dn.col = "red")
-
 # Linear model on same range as your chart
 indices = 1:nrow(close)
 model = lm(close[, 1]~indices)
