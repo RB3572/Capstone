@@ -1,5 +1,4 @@
 <div align="center">
-	<img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/RB3572/Capstone/lint-project">
 	<img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/RB3572/Capstone">
 	<img alt="GitHub" src="https://img.shields.io/github/license/RB3572/Capstone">
 	<img alt="GitHub repo file count" src="https://img.shields.io/github/directory-file-count/RB3572/Capstone">
@@ -40,19 +39,11 @@ Existing projects include:
 
 
 ## Proposed Model/Algorithm: 
- A golden/death cross occurs when the ploted line of a stock's long term average crosses the line of its short term average. If the short term average starts below the long term average and crosses above it, the pattern is called a golden cross. Otherwise, it's called a death cross. A golden cross is a signifier of a bull market, or a continuous rise in stock price, while a death cross marks a bearish, or lowering, price trend. Using machine learning, our model will use opening, high, low, closing, and the adjusted closing prices to learn to predict death and golden crosses. 
+1) Linear Regression: y=⍺+βx+ε | x = time, y = stock price, ⍺ = y intercept, ε = error. Linear regression is used to find the relationship between two variables, or in our case, time and stock price. While linear regression can reveal a trend in stock data, it's not optimal for predicting stocks, as any sudden change in price will cause a user to lose money.
+ <p align="center"><a href="https://ibb.co/zQG24zb"><img src="https://i.ibb.co/XjS5Cqp/91cf0ec1-0a0e-4c28-9dff-ad554150d080.png" alt="91cf0ec1-0a0e-4c28-9dff-ad554150d080" border="0"></a>
+
+2) Recurrent Neural Network. RNNs are designed for sequence prediction problems, making them more ideal for predicting stock data. Our explanitory variable is price data leading up to a golden crosses. The response variable is price data after the golden cross. A golden cross occurs when the ploted line of a stock's long term average crosses the line of its short term average. If the short term average starts below the long term average and crosses above it, the pattern is called a golden cross. Otherwise, it's called a death cross. A golden cross is a signifier of a bull market. Our model attempts to predict the stock price outcome after a golden cross. 
  [<p align="center"><img src="https://i.ibb.co/rGDzzCW/Screen-Shot-2021-07-05-at-2-06-25-PM.png" alt="Screen-Shot-2021-07-05-at-2-06-25-PM" border="0"></a>](https://www.tradingview.com/chart/LOExVaqb/)
 
-### Approach
-Explanatory Variable: Price data leading up to a golden/death cross.
-- Closing, High, Low etc...
-- Golden/Death cross locations were found using TTR package
-
-Response Variable: Price trend after the  golden/death cross.
-- Upward or downward trend
-
-Method: Recurrent Neural Network. (RNN)
-- RNNs are designed for sequence prediction problems
-- Ideal for stock data
   
 
