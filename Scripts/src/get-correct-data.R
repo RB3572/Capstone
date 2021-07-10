@@ -21,5 +21,6 @@ getCorrectData = function(stockArray) {
         colnames(sortedStockData)[((length(stockArray) * 6) * 2) + i] <- paste0(colnames(sortedStockData)[i], ".SMA200")
     }
     
-    return(sortedStockData)
+    colOrder <- c("High", "Open", "Close", "Low", "Volume", "Adjusted", "SMA50", "SMA200")
+    return(list(sortedStockData = sortedStockData, colOrder = colOrder))
 }

@@ -1,4 +1,9 @@
+rm(list = ls())
+gc()
+
 source("src/get-correct-data.R")
+
+colOrder <- c("Open", "High", "Low", "Close", "Volume", "Adjusted", "SMA50", "SMA200")
 
 tickerName <- c("AAPL")
 
@@ -44,3 +49,5 @@ return (crosses)
 data = getCorrectData(tickerName)
 c1 = detectCross(data)
 data = cbind(data, c1)
+
+dataClose = data[length()]
