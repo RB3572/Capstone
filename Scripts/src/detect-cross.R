@@ -2,6 +2,7 @@ rm(list = ls())
 gc()
 
 source("src/get-correct-data.R")
+source("src/find-index-attribute-ticker.R")
 
 colOrder <- c("Open", "High", "Low", "Close", "Volume", "Adjusted", "SMA50", "SMA200")
 
@@ -50,4 +51,4 @@ data = getCorrectData(tickerName)
 c1 = detectCross(data)
 data = cbind(data, c1)
 
-dataClose = data[length()]
+dataClose = data$sortedStockData[, findIndex(stockArray = tickerName, colOrder = data$colOrder, col = "Close", ticker = "AAPL")]
