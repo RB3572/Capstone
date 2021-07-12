@@ -4,7 +4,6 @@ gc()
 library(quantmod)
 library(TTR)
 library(devtools)
-# install_github("Ferryistaken/ezstocks")
 library(ezstocks)
 library(xts)
 library(dygraphs)
@@ -15,7 +14,7 @@ startYear <- "2010"
 startMonth <- "01"
 startDay <- "01"
 
-stocks <- c("MSFT")
+stocks <- c("GS")
 
 stockData = getStockData(stocks,
                          startYear = startYear,
@@ -43,7 +42,7 @@ plot(y = out$predictions,
      x = 1:nrow(out),
      xlim = c(1, 5000),
      col = "grey",
-     lwd = 0.1,
+ lwd = 0.1,
      main = paste0("Real price of ", stocks[1], " vs prediction"),
      xlab = "Time (Days)",
      ylab = "Price (USD)")
