@@ -50,9 +50,3 @@ return (crosses)
 data = getCorrectData(tickerName)
 c1 = detectCross(data)
 data = cbind(data, c1)
-
-<<<<<<< HEAD
-dataClose = data$sortedStockData[, findIndex(stockArray = tickerName, colOrder = data$colOrder, col = "Close", ticker = "AAPL")]
-=======
-idxCloseAAPL = length(stockArray) * (which(colOrder == "Close") - 1) + which(stockArray == "AAPL")
->>>>>>> f8987767ac6a73f53f1719f8799fb197bba75fd2
