@@ -50,4 +50,4 @@ data = getCorrectData(tickerName)
 c1 = detectCross(data)
 data = cbind(data, c1)
 
-dataClose = data[length()]
+idxCloseAAPL = length(stockArray) * (which(colOrder == "Close") - 1) + which(stockArray == "AAPL")
