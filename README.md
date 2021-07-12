@@ -48,7 +48,3 @@ Existing projects include:
 	
 3) Recurrent Neural Network using golden crosses: Instead of stock returns, our explanatory variable is price data leading up to a golden crosses, and the response variable is price data after the golden cross. A golden cross occurs when the plotted line of a stock's long term average crosses the line of its short term average. If the short term average starts below the long term average and crosses above it, the pattern is called a golden cross. Otherwise, it's called a death cross. A golden cross is a signifier of a bull market. Our model attempts to predict the stock price outcome after a golden cross. 
  [<p align="center"><img src="https://i.ibb.co/rGDzzCW/Screen-Shot-2021-07-05-at-2-06-25-PM.png" alt="Screen-Shot-2021-07-05-at-2-06-25-PM" border="0"></a>](https://www.tradingview.com/chart/LOExVaqb/)
-
-
-  
-
