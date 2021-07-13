@@ -1,17 +1,12 @@
 intro_panel <- tabPanel(
     "Golden Cross RNN",
-    
     titlePanel("Graphs"),
-    
-    
 )
-second_panel <- tabPanel(
-    "Stock Return RNN",
-    titlePanel("Graphs"),
-    sidebarLayout(
-        sidebar_content, main_content
-    )
+
+main_content <- mainPanel(
+    plotOutput("plot")
 )
+
 sidebar_content <- sidebarPanel(
     selectInput(
         "ticker",
@@ -21,8 +16,12 @@ sidebar_content <- sidebarPanel(
     )
 )
 
-main_content <- mainPanel(
-    plotOutput("plot")
+second_panel <- tabPanel(
+    "Stock Return RNN",
+    titlePanel("Graphs"),
+    sidebarLayout(
+        sidebar_content, main_content
+    )
 )
 
 ui <- navbarPage(
