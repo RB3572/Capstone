@@ -5,7 +5,6 @@ library(keras)
 library(quantmod)
 library(TTR)
 library(devtools)
-# install_github("Ferryistaken/ezstocks")
 library(ezstocks)
 library(xts)
 
@@ -71,23 +70,7 @@ dim(y_train)
 dim(x_test)
 dim(y_test)
 
-# model <- keras_model_sequential()
-# 
-# model %>%
-#     layer_lstm(units = 50, return_sequences = TRUE, input_shape = dim(x_train)) %>%
-#     layer_simple_rnn(units = 20) %>%
-#     layer_dense(units = 1, activation = 'sigmoid')
-# 
-# summary(model)
-# 
-# model %>% compile(loss = 'mean_squared_error',
-#                   optimizer = 'adam')
-# 
-# trained_model <- model %>% fit(
-#     x = x_train,
-#     y = y_train,
-#     batch_size = 32,
-#     epochs = 15)
+######### MODEL #############
 
 KerasNNRegressor <- function(
   x = x,

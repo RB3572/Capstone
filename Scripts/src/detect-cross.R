@@ -4,23 +4,21 @@ gc()
 source("src/get-correct-data.R")
 source("src/find-index-attribute-ticker.R")
 
-colOrder <- c("Open", "High", "Low", "Close", "Volume", "Adjusted", "SMA50", "SMA200")
-
 tickerName <- c("AAPL")
 
 # TODO: Softcode all the indexing
-detectCross <- function(data){
+detectCross <- function(sma50, sma200){
     
     is50Higher = FALSE
     crosses = c()
-    for(i in 1:(nrow(data)-1)){
+    for(i in 1:(length(sma50) - 1)){
         
-        if(is.na(data$AAPL.Close.SMA50[i]) || is.na(data$AAPL.Close.SMA200[i])){
+        if(is.na(sma50[i]) || is.na(sma200[i])){
             crosses = append(crosses, NA)
         } 
         else{
             if(is50Higher){
-                if(data$AAPL.Close.SMA50[i] < data$AAPL.Close.SMA200[i]){
+                if(sma50[i] < sma200[i]){
                     is50Higher = FALSE
                     #death cross
                     crosses = append(crosses, 'd')
@@ -32,7 +30,7 @@ detectCross <- function(data){
             }
             
             if(is50Higher == FALSE){
-                if(data$AAPL.Close.SMA50[i] > data$AAPL.Close.SMA200[i]){
+                if(sma50[i] > sma200[i]){
                     is50Higher = TRUE
                     #golden cross
                     crosses = append(crosses,'g')
@@ -44,9 +42,9 @@ detectCross <- function(data){
             }
         }
     }
-return (crosses)
+    return (crosses)
 }
-
+# 
 data = getCorrectData(tickerName)
-c1 = detectCross(data$sortedStockData)
-data = cbind(data$sortedStockData, c1)
+c1 = detectCross(data$sortedStockData$AAPL.Close.SMA50, data$sortedStockData$AAPL.Close.SMA200)
+newdata = cbind(data$sortedStockData, c1)
