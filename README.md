@@ -41,7 +41,7 @@ Existing projects include:
 
 
 ## Proposed Model/Algorithm: 
-1) Linear Regression: y=⍺+βx+ε | x = time, y = stock price, ⍺ = y intercept, ε = error. Linear regression is used to find the relationship between two variables, or in our case, time and stock price. While linear regression can reveal a trend in stock data, it's not optimal for predicting stocks, as any sudden change in price will cause a user to lose money.
+1) Linear Regression: y=⍺+βx+ε | x = time, y = stock price, ⍺ = y intercept, ε = error. Linear regression is used to find the relationship between two variables, or in our case, time and stock price. While linear regression can reveal a trend in stock data, it's not optimal for predicting stocks, as any sudden change in price can cause a user to lose money.
  <p align="center"><a href="https://ibb.co/zQG24zb"><img src="https://i.ibb.co/XjS5Cqp/91cf0ec1-0a0e-4c28-9dff-ad554150d080.png" alt="91cf0ec1-0a0e-4c28-9dff-ad554150d080" border="0"></a>
 	
 2) Recurrent Neural Network using stock returns: RNNs are designed for sequence prediction problems, making them ideal for predicting stock data. The neural network will use stock returns as both the explanatory and response variables. Another option for data would be to use the closing price. A recurrent neural network could learn from past stock prices and attempt to predict the future. But, stock price trends vary from year to year, so training an AI to predict next year's stock closing prices using last year's closing price data is un-ideal. Stock returns don't have as much variation and are better suited for making predictions with an RNN. 
