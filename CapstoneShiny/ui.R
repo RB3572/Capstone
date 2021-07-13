@@ -4,15 +4,22 @@ intro_panel <- tabPanel(
 )
 
 main_content <- mainPanel(
-    plotOutput("plot")
+    plotOutput("plot"),
+    textOutput("bugcheck")
 )
 
 sidebar_content <- sidebarPanel(
-    selectInput(
-        "ticker",
-        label = "Stocks",
-        choices = c("AAPL","AMZN","RTX"),
-        selected = "Speed"
+    # selectInput(
+    #     "ticker",
+    #     label = "Stocks",
+    #     choices = c("AAPL","AMZN","RTX"),
+    #     selected = "Speed"
+    # )
+    textInput(
+        inputId = "ticker",
+        label = "Ticker to analyze",
+        placeholder = "Input a ticker",
+        value = "AAPL"
     )
 )
 

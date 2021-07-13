@@ -153,6 +153,7 @@ KerasNNRegressor <- function(
             y_test_hat = y_test_hat,
             y_test_eval_matrix = y_test_eval_matrix,
             Training.Plot = plot(history),
+            history = history,
             Result = result
         )
     )

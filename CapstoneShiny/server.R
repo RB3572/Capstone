@@ -1,4 +1,4 @@
-server <- function(input, output) {
+modelFunction <- function(input) {
     library(keras)
     library(quantmod)
     library(TTR)
@@ -6,16 +6,30 @@ server <- function(input, output) {
     #install_github("Ferryistaken/ezstocks")
     library(ezstocks)
     library(xts)
+    # source("KerasNNRegressor.R")
     minmax_normalize <- function(x, na.rm = TRUE) {
         return((x- min(x)) /(max(x)-min(x)))
     }
-    stockArray <- c("AMZN") #TODO: replace with ticker variable later reactive(input$ticker)
+    # output$bugcheck <- renderText(
+    #     {print(input$ticker)}
+    # )
+    # tickerName <- input$ticker
+    # stockArray <- c(tickerName) #TODO: replace with ticker variable later reactive(input$ticker)
     cutoff <- 0.7
-    stockData <- getStockData(stockArray)
+    stockData <- getStockData(c(input))
+    # output$bugcheck <- renderText(
+    #     {print(getStockData(c(input$ticker)))[1, 1]}
+    # )
     startYear <- "2015"
     startMonth <- "01"
     startDay <- "01"
-    allData = ezstocks::getStockData(stocks = stockArray, startYear = startYear, startMonth = startMonth,  startDay = startDay)
+    # output$bugcheck <- renderText(
+    #     {print(stockData[1, 1])}
+    # )
+    allData = ezstocks::getStockData(stocks = c(input), startYear = startYear, startMonth = startMonth,  startDay = startDay)
+    # output$bugcheck <- renderText(
+    #     {print()}
+    # )
     closeData <- ezstocks::getCloseData(allData)
     returnsList <- apply(as.xts(closeData), 2, quantmod::Delt) + 1
     returnsList = returnsList[-1,]
@@ -38,11 +52,14 @@ server <- function(input, output) {
         activation = "relu",
         useBias = TRUE,
         dropoutRate = 0.2,
-        epochs = 100)
+        epochs = 10)
+    plot(model$history)
+}
+
+
+server <- function(input, output) {
     output$plot <- renderPlot({
-        plot(model$Training.Plot)
-        
-        
+        modelFunction(input$ticker)
     })
     
 }
