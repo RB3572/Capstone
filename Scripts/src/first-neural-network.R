@@ -12,7 +12,7 @@ minmax_normalize <- function(x, na.rm = TRUE) {
     return((x- min(x)) /(max(x)-min(x)))
 }
 
-stockArray <- c("AMZN")
+stockArray <- c("TSLA")
 cutoff <- 0.7
 
 # Get data
