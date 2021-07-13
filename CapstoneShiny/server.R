@@ -211,16 +211,3 @@ KerasNNRegressor <- function(
         )
     )
 }
-
-
-
-
-model = KerasNNRegressor(
-    x = x,
-    y = y,
-    cutoff = 0.97,
-    numberOfHiddenLayers = 3,
-    activation = "relu",
-    useBias = TRUE,
-    dropoutRate = 0.2,
-    epochs = 100)
