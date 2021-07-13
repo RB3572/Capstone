@@ -1,4 +1,4 @@
-modelFunction <- function(input) {
+modelFunction <- function(ticker, epochs) {
     library(keras)
     library(quantmod)
     library(TTR)
@@ -6,7 +6,7 @@ modelFunction <- function(input) {
     #install_github("Ferryistaken/ezstocks")
     library(ezstocks)
     library(xts)
-    source("KerasNNRegressor.R")
+    source("../Scripts/src/keras-nn-regressor.R")
     minmax_normalize <- function(x, na.rm = TRUE) {
         return((x - min(x)) /(max(x)-min(x)))
     }
@@ -17,7 +17,7 @@ modelFunction <- function(input) {
     # tickerName <- input$ticker
     # stockArray <- c(tickerName) #TODO: replace with ticker variable later reactive(input$ticker)
     cutoff <- 0.7
-    stockData <- getStockData(c(input))
+    stockData <- getStockData(c(ticker))
     # output$bugcheck <- renderText(
     #     {print(getStockData(c(input$ticker)))[1, 1]}
     # )
@@ -27,7 +27,7 @@ modelFunction <- function(input) {
     # output$bugcheck <- renderText(
     #     {print(stockData[1, 1])}
     # )
-    allData = ezstocks::getStockData(stocks = c(input), startYear = startYear, startMonth = startMonth,  startDay = startDay)
+    allData = ezstocks::getStockData(stocks = c(ticker), startYear = startYear, startMonth = startMonth,  startDay = startDay)
     # output$bugcheck <- renderText(
     #     {print()}
     # )
@@ -52,11 +52,11 @@ modelFunction <- function(input) {
         x = x,
         y = y,
         cutoff = 0.97,
-        numberOfHiddenLayers = 3,
+        numberOfHiddenLayers = 4,
         activation = "relu",
         useBias = TRUE,
-        dropoutRate = 0.2,
-        epochs = 100)
+        dropoutRate = 0.3,
+        epochs = epochs)
     
     minmax_reverse <- function(x) {
         return(x * (maxX - minX) + minX)
@@ -70,7 +70,7 @@ modelFunction <- function(input) {
 
 server <- function(input, output) {
     output$plot <- renderPlot({
-        modelFunction(input$ticker)
+        modelFunction(ticker = input$ticker, epochs = input$epochs)
     })
     
 }

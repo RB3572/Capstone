@@ -20,7 +20,12 @@ sidebar_content <- sidebarPanel(
         label = "Ticker to analyze",
         placeholder = "Input a ticker",
         value = "AAPL"
-    )
+    ),
+    sliderInput("epochs",
+                "Epochs",
+                min = 50,
+                max = 1000,
+                value = 100)
 )
 
 second_panel <- tabPanel(
