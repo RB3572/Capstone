@@ -6,8 +6,8 @@ intro_panel <- tabPanel(
     
 )
 second_panel <- tabPanel(
-    "[Tab Title]",
-    titlePanel("[Page Title]"),
+    "Stock Return RNN",
+    titlePanel("Graphs"),
     sidebarLayout(
         sidebar_content, main_content
     )
