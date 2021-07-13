@@ -48,5 +48,5 @@ return (crosses)
 }
 
 data = getCorrectData(tickerName)
-c1 = detectCross(data)
-data = cbind(data, c1)
+c1 = detectCross(data$sortedStockData)
+data = cbind(data$sortedStockData, c1)
