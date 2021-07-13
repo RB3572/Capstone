@@ -233,8 +233,6 @@ KerasNNRegressor <- function(
 }
 
 
-
-
 model = KerasNNRegressor(
     x = x,
     y = y,
