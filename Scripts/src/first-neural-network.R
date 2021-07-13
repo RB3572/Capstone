@@ -13,7 +13,7 @@ minmax_normalize <- function(x, na.rm = TRUE) {
     return((x- min(x)) /(max(x)-min(x)))
 }
 
-stockArray <- c("AAPL")
+stockArray <- c("AMZN")
 cutoff <- 0.7
 
 # Get data
@@ -26,8 +26,6 @@ startMonth <- "01"
 startDay <- "01"
 
 ########### CHOOSE STOCKS AND TIME FRAME ######
-stockArray <- c("AAPL")
-
 ########### GET STOCK DATA ####################
 allData = ezstocks::getStockData(stocks = stockArray,
                                  startYear = startYear,
