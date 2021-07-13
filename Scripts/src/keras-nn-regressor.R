@@ -1,77 +1,3 @@
-rm(list = ls())
-gc()
-
-library(keras)
-library(quantmod)
-library(TTR)
-library(devtools)
-library(ezstocks)
-library(xts)
-
-minmax_normalize <- function(x, na.rm = TRUE) {
-    return((x- min(x)) /(max(x)-min(x)))
-}
-
-stockArray <- c("TSLA")
-cutoff <- 0.7
-
-# Get data
-stockData <- getStockData(stockArray)
-##### We should use return since stocks only go up
-
-
-startYear <- "2015"
-startMonth <- "01"
-startDay <- "01"
-
-########### CHOOSE STOCKS AND TIME FRAME ######
-########### GET STOCK DATA ####################
-allData = ezstocks::getStockData(stocks = stockArray,
-                                 startYear = startYear,
-                                 startMonth = startMonth,
-                                 startDay = startDay)
-
-########## MANIPULATE DATA ###################
-closeData <- ezstocks::getCloseData(allData)
-
-returnsList <- apply(as.xts(closeData), 2, quantmod::Delt) + 1
-returnsList = returnsList[-1,]
-
-
-data = cbind(returnsList,
-             lag(returnsList, 1),
-             lag(returnsList, 2),
-             lag(returnsList, 3),
-             lag(returnsList, 5),
-             lag(returnsList, 10),
-             lag(returnsList, 25),
-             lag(returnsList, 50)
-)
-
-data = data.frame(na.omit(data))
-colnames(data) = c("Y", paste0("Lag", c(1, 2, 3, 5, 10, 25, 50)))
-
-x <- data[, -1]
-y <- as.data.frame(data[, 1])
-colnames(y) = "Y"
-
-dim(x)
-dim(y)
-
-x_train <- x[1:(nrow(x) * cutoff), ]
-y_train <- as.data.frame(y[1:(nrow(y) * cutoff), ])
-
-x_test <- x[1:(nrow(x) * (1 - cutoff)), ]
-y_test <- as.data.frame(y[1:(nrow(y) * (1 - cutoff)), ])
-
-dim(x_train)
-dim(y_train)
-
-dim(x_test)
-dim(y_test)
-
-######### MODEL #############
-
 KerasNNRegressor <- function(
   x = x,
   y = y,
@@ -87,6 +13,8 @@ KerasNNRegressor <- function(
   l1.units = 20,
   l2.units = 10,
   l3.units = 5,
+  l4.units = 4,
+  l5.units = 2,
   dropoutRate = 0.2,
   epochs = 10,
   forceClassifier = FALSE
@@ -148,6 +76,34 @@ KerasNNRegressor <- function(
       layer_dense(units = l2.units, activation = activation, use_bias = useBias) %>%
       layer_dropout(dropoutRate) %>%
       layer_dense(units = l3.units, activation = activation, use_bias = useBias) %>%
+      layer_dropout(dropoutRate) %>%
+      layer_dense(units = 1, activation = finalactivation)
+    summary(model)
+  } else if (numberOfHiddenLayers == 4) {
+    model <- keras_model_sequential()
+    model %>%
+      layer_dense(units = l1.units, activation = activation, input_shape = c(ncol(x_train))) %>%
+      layer_dropout(dropoutRate) %>%
+      layer_dense(units = l2.units, activation = activation, use_bias = useBias) %>%
+      layer_dropout(dropoutRate) %>%
+      layer_dense(units = l3.units, activation = activation, use_bias = useBias) %>%
+      layer_dropout(dropoutRate) %>%
+      layer_dense(units = l4.units, activation = activation, use_bias = useBias) %>%
+      layer_dropout(dropoutRate) %>%
+      layer_dense(units = 1, activation = finalactivation)
+    summary(model)
+  } else if (numberOfHiddenLayers == 5) {
+    model <- keras_model_sequential()
+    model %>%
+      layer_dense(units = l1.units, activation = activation, input_shape = c(ncol(x_train))) %>%
+      layer_dropout(dropoutRate) %>%
+      layer_dense(units = l2.units, activation = activation, use_bias = useBias) %>%
+      layer_dropout(dropoutRate) %>%
+      layer_dense(units = l3.units, activation = activation, use_bias = useBias) %>%
+      layer_dropout(dropoutRate) %>%
+      layer_dense(units = l4.units, activation = activation, use_bias = useBias) %>%
+      layer_dropout(dropoutRate) %>%
+      layer_dense(units = l5.units, activation = activation, use_bias = useBias) %>%
       layer_dropout(dropoutRate) %>%
       layer_dense(units = 1, activation = finalactivation)
     summary(model)
@@ -231,14 +187,3 @@ KerasNNRegressor <- function(
     )
   )
 }
-
-
-model = KerasNNRegressor(
-    x = x,
-    y = y,
-    cutoff = 0.97,
-    numberOfHiddenLayers = 4,
-    activation = "relu",
-    useBias = TRUE,
-    dropoutRate = 0.2,
-    epochs = 100)
