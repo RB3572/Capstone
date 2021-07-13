@@ -6,10 +6,11 @@ modelFunction <- function(input) {
     #install_github("Ferryistaken/ezstocks")
     library(ezstocks)
     library(xts)
-    # source("KerasNNRegressor.R")
+    source("KerasNNRegressor.R")
     minmax_normalize <- function(x, na.rm = TRUE) {
-        return((x- min(x)) /(max(x)-min(x)))
+        return((x - min(x)) /(max(x)-min(x)))
     }
+    
     # output$bugcheck <- renderText(
     #     {print(input$ticker)}
     # )
@@ -31,9 +32,12 @@ modelFunction <- function(input) {
     #     {print()}
     # )
     closeData <- ezstocks::getCloseData(allData)
-    returnsList <- apply(as.xts(closeData), 2, quantmod::Delt) + 1
-    returnsList = returnsList[-1,]
-    data = cbind(returnsList,lag(returnsList, 1),lag(returnsList, 2),lag(returnsList, 3),lag(returnsList, 5),lag(returnsList, 10),lag(returnsList, 25),lag(returnsList, 50))
+    minX <- min(closeData)
+    maxX <- max(closeData)
+    # returnsList <- apply(as.xts(closeData), 2, quantmod::Delt) + 1
+    # returnsList = returnsList[-1,]
+    closeData <- minmax_normalize(closeData)
+    data = cbind(closeData ,lag(closeData, 1),lag(closeData, 2),lag(closeData, 3),lag(closeData, 5),lag(closeData, 10),lag(closeData, 25),lag(closeData, 50))
     data = data.frame(na.omit(data))
     colnames(data) = c("Y", paste0("Lag", c(1, 2, 3, 5, 10, 25, 50)))
     x <- data[, -1]
@@ -52,8 +56,15 @@ modelFunction <- function(input) {
         activation = "relu",
         useBias = TRUE,
         dropoutRate = 0.2,
-        epochs = 10)
-    plot(model$history)
+        epochs = 100)
+    
+    minmax_reverse <- function(x) {
+        return(x * (maxX - minX) + minX)
+    }
+    
+    plotData <- cbind(minmax_reverse(model$y_test), minmax_reverse(model$y_test_hat))
+    
+    matplot(plotData, type = "l")
 }
 
 
