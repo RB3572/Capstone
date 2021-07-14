@@ -1,0 +1,3 @@
+[submodule "CapstonePackage"]
+	path = CapstonePackage
+	url = https://github.com/Ferryistaken/CapstonePackage.git
