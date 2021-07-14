@@ -20,7 +20,12 @@ ReturnSelector_content <- sidebarPanel(
                 "Epochs",
                 min = 5,
                 max = 100,
-                value = 50)
+                value = 50),
+    sliderInput("ReturnScaling",
+                "Scaling Factor",
+                min = 1,
+                max = 25,
+                value = 10)
 )
 
 StockReturn_panel <- tabPanel(

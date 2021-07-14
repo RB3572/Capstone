@@ -1,4 +1,4 @@
-returnsRNN <- function(ticker, epochs, modelPath = "src/keras-nn-regressor.R") {
+returnsRNN <- function(ticker, epochs, modelPath = "src/keras-nn-regressor.R", scalingFactor = 11) {
     library(keras)
     library(quantmod)
     library(TTR)
@@ -70,7 +70,7 @@ returnsRNN <- function(ticker, epochs, modelPath = "src/keras-nn-regressor.R") {
 
     ######### MODEL #############
     source(modelPath)
-
+    
     model = KerasNNRegressor(
         x = x,
         y = y,
@@ -82,7 +82,7 @@ returnsRNN <- function(ticker, epochs, modelPath = "src/keras-nn-regressor.R") {
         dropoutRate = 0.4,
         epochs = epochs)
     
-    tmp = model$y_test_hat * 11
+    tmp = model$y_test_hat * scalingFactor
     tmp = tmp + (1 - mean(tmp))
     
     plotData = cbind(model$y_test, tmp)
