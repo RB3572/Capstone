@@ -13,5 +13,5 @@ RnwWeave: Sweave
 LaTeX: pdfLaTeX
 
 PythonType: virtualenv
-PythonVersion: 3.8.7
-PythonPath: ~/development/virtualenvs/columbia-course/bin/python3
+PythonVersion: 3.8.11
+PythonPath: ~/Development/virtualenvs/columbia-course/bin/python3

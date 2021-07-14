@@ -79,4 +79,4 @@ model = KerasNNRegressor(
     activation = "relu",
     useBias = TRUE,
     dropoutRate = 0.3,
-    epochs = 115)
+    epochs = 200)
