@@ -8,7 +8,7 @@ library(devtools)
 library(ezstocks)
 library(xts)
 
-stockArray <- c("AMZN")
+stockArray <- c("AAPL")
 cutoff <- 0.7
 
 # Get data
@@ -67,15 +67,31 @@ y_test <- as.data.frame(y[1:(nrow(y) * (1 - cutoff)), ])
 
 # New column should be difference in price between 50MA and 200MA
 
+head(x)
+head(y)
+
 ######### MODEL #############
 source("src/keras-nn-regressor.R")
 
 model = KerasNNRegressor(
     x = x,
     y = y,
-    cutoff = 0.97,
+    cutoff = 0.20,
     numberOfHiddenLayers = 4,
+    optimizer = optimizer_adam(lr = 0.001),
     activation = "relu",
     useBias = TRUE,
-    dropoutRate = 0.3,
-    epochs = 200)
+    dropoutRate = 0.4,
+    epochs = 50)
+
+
+plotData = cbind(model$y_test, model$y_test_hat)
+
+plot(model$y_test_hat)
+
+tmp = model$y_test_hat * 13
+tmp = tmp + (1 - mean(tmp))
+
+plotData = cbind(model$y_test, tmp)
+
+matplot(plotData, type = "l", main = paste0("Real ", stockArray, " returns vs predicted"), ylab = "Returns", xlab = "Time")

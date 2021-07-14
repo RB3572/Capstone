@@ -119,7 +119,7 @@ KerasNNRegressor <- function(
   model %>% compile(
     loss = loss,
     optimizer = optimizer,
-    metrics = c(loss) )
+    metrics = c(loss))
 
   # Training and Evaluation
   history <- model %>% fit(
