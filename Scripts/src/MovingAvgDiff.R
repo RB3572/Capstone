@@ -1,8 +1,4 @@
-#source("src/find-index-attribute-ticker.R")
-source("/Users/rishibhargava/Desktop/Capstone/Scripts/src/get-correct-data.R")
-#source("src/find-index-attribute-ticker.R")
-source("/Users/rishibhargava/Desktop/Capstone/Scripts/src/find-index-attribute-ticker.R")
-tickerName <- c("AAPL")
+
 
 MovingAvgDiff <- function(sma50, sma200){
     
@@ -49,7 +45,9 @@ MovingAvgDiff <- function(sma50, sma200){
     }
     return (priceDiffs)
 }
-
-data = getCorrectData(tickerName)
-crosses = MovingAvgDiff(data$sortedStockData$AAPL.Close.SMA50, data$sortedStockData$AAPL.Close.SMA200)
-newdata = cbind(data$sortedStockData, crosses)
+# source("../Scripts/src/get-correct-data.R")
+# source("../Scripts/src/find-index-attribute-ticker.R")
+# tickerName <- c("AAPL")
+# data = getCorrectData(tickerName)
+# crosses = MovingAvgDiff(data$sortedStockData$AAPL.Close.SMA50, data$sortedStockData$AAPL.Close.SMA200)
+# newdata = cbind(data$sortedStockData, crosses)

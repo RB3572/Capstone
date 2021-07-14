@@ -1,10 +1,3 @@
-# rm(list = ls())
-
-source("src/get-correct-data.R")
-source("src/find-index-attribute-ticker.R")
-
-# tickerName <- c("AAPL")
-
 detectCross <- function(sma50, sma200){
     
     is50Higher = FALSE
@@ -42,7 +35,10 @@ detectCross <- function(sma50, sma200){
     }
     return (crosses)
 }
-
+# rm(list = ls())
+# source("src/get-correct-data.R")
+# source("src/find-index-attribute-ticker.R")
+# tickerName <- c("AAPL")
 # data = getCorrectData(tickerName)
 # crosses = detectCross(data$sortedStockData$AAPL.Close.SMA50, data$sortedStockData$AAPL.Close.SMA200)
 # newdata = cbind(data$sortedStockData, crosses)
