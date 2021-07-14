@@ -1,4 +1,4 @@
-priceRNN <- function(ticker, epochs, modelPath = "../Scripts/src/keras-nn-regressor.R") {
+priceRNN <- function(ticker, epochs, scriptsPath = "../Scripts") {
     library(keras)
     library(quantmod)
     library(TTR)
@@ -6,7 +6,7 @@ priceRNN <- function(ticker, epochs, modelPath = "../Scripts/src/keras-nn-regres
     #install_github("Ferryistaken/ezstocks")
     library(ezstocks)
     library(xts)
-    source(modelPath)
+    source(paste0(scriptsPath, "/src/keras-nn-regressor.R"))
     minmax_normalize <- function(x, na.rm = TRUE) {
         return((x - min(x)) /(max(x)-min(x)))
     }

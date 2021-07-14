@@ -1,4 +1,4 @@
-returnsRNN <- function(ticker, epochs, modelPath = "src/keras-nn-regressor.R", scalingFactor = 11) {
+returnsRNN <- function(ticker, epochs, scriptsPath = "../Scripts", scalingFactor = 11) {
     library(keras)
     library(quantmod)
     library(TTR)
@@ -69,7 +69,7 @@ returnsRNN <- function(ticker, epochs, modelPath = "src/keras-nn-regressor.R", s
     head(y)
 
     ######### MODEL #############
-    source(modelPath)
+    source(paste0(scriptsPath, "/src/keras-nn-regressor.R"))
     
     model = KerasNNRegressor(
         x = x,

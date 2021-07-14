@@ -1,4 +1,4 @@
-avgDiffRNN <- function(ticker, epochs, modelPath = "../Scripts/src/keras-nn-regressor.R") {
+avgDiffRNN <- function(ticker, epochs, scriptsPath = "../Scripts") {
     library(keras)
     library(quantmod)
     library(TTR)
@@ -11,8 +11,8 @@ avgDiffRNN <- function(ticker, epochs, modelPath = "../Scripts/src/keras-nn-regr
         return((x - min(x)) /(max(x)-min(x)))
     }
     
-    source("src/MovingAvgDiff.R")
-    source("src/get-correct-data.R")
+    source(paste0(scriptsPath, "/src/MovingAvgDiff.R"))
+    source(paste0(scriptsPath, "/src/get-correct-data.R"))
     
     cutoff <- 0.7
     stockData <- getStockData(c(ticker))
