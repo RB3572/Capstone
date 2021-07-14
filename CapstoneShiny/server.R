@@ -1,7 +1,21 @@
 server <- function(input, output) {
+<<<<<<< HEAD
+    output$ReturnPlot <- renderPlot({
+        source("../Scripts/src/keras-nn-regressor.R")
+        plot(y = c(input$ReturnEpochs, input$ReturnEpochs, input$ReturnEpochs), x = c(1,2,3), ylim = c(0,1000), main = input$ReturnTicker)
+        #keras-nn-regressor(ticker = input$ReturnTicker, epochs = input$ReturnEpochs)
+        #modelFunction(ticker = input$ReturnTicker, epochs = input$ReturnEpochs)
+    })
+    output$GoldenCrossPlot <-renderPlot({
+        source("../Scripts/src/keras-nn-regressor.R")
+        plot(y = c(input$GoldenEpochs, input$GoldenEpochs, input$GoldenEpochs), x = c(1,2,3), ylim = c(0,1000), main = input$GoldenTicker)
+        #keras-nn-regressor(ticker = input$GoldenTicker, epochs = input$GoldenEpochs)
+        #modelFunction(ticker = input$GoldenTicker, epochs = input$GoldenEpochs)
+=======
     output$plot <- renderPlot({
         source("../Scripts/src/returns-rnn.R")
         returnsRNN(ticker = input$ticker, epochs = input$epochs, modelPath = "../Scripts/src/keras-nn-regressor.R")
+>>>>>>> 5a4fb100aed927ea1b40adbbef9222d15781edcb
     })
     
 }
