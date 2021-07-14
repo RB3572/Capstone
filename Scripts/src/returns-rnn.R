@@ -13,9 +13,8 @@ cutoff <- 0.7
 
 # Get data
 stockData <- getStockData(stockArray)
+
 ##### We should use return since stocks only go up
-
-
 startYear <- "2015"
 startMonth <- "01"
 startDay <- "01"
