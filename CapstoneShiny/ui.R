@@ -23,9 +23,9 @@ sidebar_content <- sidebarPanel(
     ),
     sliderInput("epochs",
                 "Epochs",
-                min = 50,
-                max = 1000,
-                value = 100)
+                min = 5,
+                max = 100,
+                value = 50)
 )
 
 second_panel <- tabPanel(

@@ -1,4 +1,4 @@
-returnsRNN <- function(ticker) {
+returnsRNN <- function(ticker, epochs) {
     library(keras)
     library(quantmod)
     library(TTR)
@@ -80,7 +80,7 @@ returnsRNN <- function(ticker) {
         activation = "relu",
         useBias = TRUE,
         dropoutRate = 0.4,
-        epochs = 50)
+        epochs = epochs)
     
     
     plotData = cbind(model$y_test, model$y_test_hat)
