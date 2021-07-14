@@ -1,4 +1,4 @@
-priceRNN <- function(ticker, epochs, modelPath = "../Scripts/src/keras-nn-regressor.R") {
+avgDiffRNN <- function(ticker, epochs, modelPath = "../Scripts/src/keras-nn-regressor.R") {
     library(keras)
     library(quantmod)
     library(TTR)
@@ -10,6 +10,10 @@ priceRNN <- function(ticker, epochs, modelPath = "../Scripts/src/keras-nn-regres
     minmax_normalize <- function(x, na.rm = TRUE) {
         return((x - min(x)) /(max(x)-min(x)))
     }
+    
+    source("src/MovingAvgDiff.R")
+    source("src/get-correct-data.R")
+    
     cutoff <- 0.7
     stockData <- getStockData(c(ticker))
     startYear <- "2015"
@@ -17,10 +21,17 @@ priceRNN <- function(ticker, epochs, modelPath = "../Scripts/src/keras-nn-regres
     startDay <- "01"
     allData = ezstocks::getStockData(stocks = c(ticker), startYear = startYear, startMonth = startMonth,  startDay = startDay)
     closeData <- ezstocks::getCloseData(allData)
+    
+    correctData <- getCorrectData(c(ticker))
+    smas <- as.data.frame(cbind(correctData$sortedStockData[, 9], correctData$sortedStockData[, 15]))
+    colnames(smas) <- c("50", "200")
+    
+    avgDiff <- MovingAvgDiff(smas[, 1], smas[, 2])
+    
     minX <- min(closeData)
     maxX <- max(closeData)
     closeData <- minmax_normalize(closeData)
-    data = cbind(closeData ,lag(closeData, 1),lag(closeData, 2),lag(closeData, 3),lag(closeData, 5),lag(closeData, 10),lag(closeData, 25),lag(closeData, 50))
+    data = cbind(closeData ,lag(closeData, 1),lag(closeData, 2),lag(closeData, 3),lag(closeData, 5),lag(closeData, 10),lag(closeData, 25),lag(closeData, 50), avgDiff)
     data = data.frame(na.omit(data))
     colnames(data) = c("Y", paste0("Lag", c(1, 2, 3, 5, 10, 25, 50)))
     x <- data[, -1]
@@ -34,11 +45,11 @@ priceRNN <- function(ticker, epochs, modelPath = "../Scripts/src/keras-nn-regres
     model = KerasNNRegressor(
         x = x,
         y = y,
-        cutoff = 0.97,
+        cutoff = 0.80,
         numberOfHiddenLayers = 4,
         activation = "relu",
         useBias = TRUE,
-        dropoutRate = 0.3,
+        dropoutRate = 0.25,
         epochs = epochs)
     
     minmax_reverse <- function(x) {
@@ -51,4 +62,4 @@ priceRNN <- function(ticker, epochs, modelPath = "../Scripts/src/keras-nn-regres
     
 }
 
-priceRNN("AAPL", 10)
+avgDiffRNN(ticker = "AAPL", epochs = 115)
