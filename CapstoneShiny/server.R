@@ -1,7 +1,7 @@
 server <- function(input, output) {
     output$plot <- renderPlot({
         source("../Scripts/src/returns-rnn.R")
-        returnsRNN(ticker = input$ticker, epochs = input$epochs)
+        returnsRNN(ticker = input$ticker, epochs = input$epochs, modelPath = "../Scripts/src/keras-nn-regressor.R")
     })
     
 }

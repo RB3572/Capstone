@@ -1,4 +1,4 @@
-returnsRNN <- function(ticker, epochs) {
+returnsRNN <- function(ticker, epochs, modelPath = "src/keras-nn-regressor.R") {
     library(keras)
     library(quantmod)
     library(TTR)
@@ -40,37 +40,37 @@ returnsRNN <- function(ticker, epochs) {
                  lag(returnsList, 25),
                  lag(returnsList, 50)
     )
-    
+
     data = data.frame(na.omit(data))
     colnames(data) = c("Y", paste0("Lag", c(1, 2, 3, 5, 10, 25, 50)))
-    
+
     x <- data[, -1]
     y <- as.data.frame(data[, 1])
     colnames(y) = "Y"
-    
+
     # dim(x)
     # dim(y)
-    
+
     x_train <- x[1:(nrow(x) * cutoff), ]
     y_train <- as.data.frame(y[1:(nrow(y) * cutoff), ])
-    
+
     x_test <- x[1:(nrow(x) * (1 - cutoff)), ]
     y_test <- as.data.frame(y[1:(nrow(y) * (1 - cutoff)), ])
-    
+
     # dim(x_train)
     # dim(y_train)
-    # 
+    #
     # dim(x_test)
     # dim(y_test)
-    
+
     # New column should be difference in price between 50MA and 200MA
-    
+
     head(x)
     head(y)
-    
+
     ######### MODEL #############
-    source("src/keras-nn-regressor.R")
-    
+    source(modelPath)
+
     model = KerasNNRegressor(
         x = x,
         y = y,
