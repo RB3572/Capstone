@@ -30,11 +30,12 @@ StockReturn_panel <- tabPanel(
         StockReturn_content, ReturnSelector_content
     )
 )
-GoldenCross_content <- mainPanel(
-    plotOutput("GoldenCrossPlot"),
+
+Price_content <- mainPanel(
+    plotOutput("PricePlot"),
 )
 
-GoldenSelector_content <- sidebarPanel(
+PriceSelector_content <- sidebarPanel(
     # selectInput(
     #     "ticker",
     #     label = "Stocks",
@@ -42,22 +43,23 @@ GoldenSelector_content <- sidebarPanel(
     #     selected = "Speed"
     # )
     textInput(
-        inputId = "GoldenTicker",
+        inputId = "PriceTicker",
         label = "Ticker to analyze",
         placeholder = "Input a ticker",
         value = "AAPL"
     ),
-    sliderInput("GoldenEpochs",
+    sliderInput("PriceEpochs",
                 "Epochs",
                 min = 50,
                 max = 1000,
                 value = 100)
 )
-goldenCross_panel <- tabPanel(
-    "Golden Cross RNN",
+
+Price_panel <- tabPanel(
+    "Price RNN",
     titlePanel("Graphs"),
     sidebarLayout(
-        GoldenCross_content, GoldenSelector_content
+        Price_content, PriceSelector_content
     )
 )
 
@@ -65,5 +67,5 @@ ui <- navbarPage(
     "Stock Prediction Using RNN and Return Prices",
     
     StockReturn_panel,
-    goldenCross_panel
+    Price_panel
 )

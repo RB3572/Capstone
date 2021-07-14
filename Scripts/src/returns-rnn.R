@@ -82,12 +82,7 @@ returnsRNN <- function(ticker, epochs, modelPath = "src/keras-nn-regressor.R") {
         dropoutRate = 0.4,
         epochs = epochs)
     
-    
-    plotData = cbind(model$y_test, model$y_test_hat)
-    
-    plot(model$y_test_hat)
-    
-    tmp = model$y_test_hat * 13
+    tmp = model$y_test_hat * 11
     tmp = tmp + (1 - mean(tmp))
     
     plotData = cbind(model$y_test, tmp)
