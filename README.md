@@ -54,3 +54,19 @@ Existing projects include:
  
  4) Recurrent Neural Network using closing prices: Mentioned above is how stock price data isn't great for making a accurate predictions with an RNN. To test this theory, we decided to try using closing prices for both explanatory and response variables in our RNN. 
  <p align = "center"><a href="https://ibb.co/TMKchmF"><img src="https://i.ibb.co/qY0B1kP/aapl-price.png" alt="aapl-price" border="0"></a>
+	
+## How to use
+	
+To run our webapp, simply install a container engine for your operating system (such as [Docker](https://www.docker.com/) or [Podman](https://podman.io/)), and pull our container by running:
+
+```bash
+docker pull u3ebmgske4udqutxkw8rkn/capstone-project
+```
+
+If this doesn't work, just clone this repository, navigate into the 'Docker' directory, and run the `create-docker.sh` script (only tested on Unix-like operating systems). This will create a docker image called `capstone-project`, which can then be used by running:
+
+```bash
+docker run --rm -p 3838:3838 localhost/capstone-project:latest
+```
+
+This will start the shiny server on `http://127.0.0.1:3838`
