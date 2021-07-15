@@ -7,6 +7,9 @@
 	<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/RB3572/Capstone">
 	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/RB3572/Capstone">
 	<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/RB3572/Capstone">
+	<img alt="Docker Automated build" src="https://img.shields.io/docker/automated/u3ebmgske4udqutxkw8rkn/capstone-project">
+	<img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/u3ebmgske4udqutxkw8rkn/capstone-project">
+	<img alt="Docker Image Size (latest by date)" src="https://img.shields.io/docker/image-size/u3ebmgske4udqutxkw8rkn/capstone-project">
 </div>
 
 # <p align="center">Machine Learning Stock Predictions</p>
